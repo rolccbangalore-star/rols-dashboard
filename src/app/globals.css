@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* Urbanist Font (global) */
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-sans: 'Urbanist', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Apply font + background globally */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+/* ✅ Inputs */
+input, textarea, select {
+  width: 100%;
+  color: #171717;                /* readable text */
+  background-color: #ffffff;     /* solid background */
+  border: 1px solid #d1d5db;     /* gray-300 */
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;         /* rounded-md */
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #2563eb;         /* blue-600 */
+  box-shadow: 0 0 0 2px #93c5fd; /* blue-300 ring */
+}
+
+input::placeholder, textarea::placeholder {
+  color: #9ca3af;                /* gray-400 */
+}
+
+/* ✅ Buttons */
+button {
+  font-family: inherit;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-primary {
+  background-color: #2563eb;     /* blue-600 */
+  color: white;
+  padding: 0.6rem 1rem;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #1e40af;     /* blue-800 */
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;     /* gray-200 */
+  color: #374151;                /* gray-700 */
+  padding: 0.6rem 1rem;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #d1d5db;     /* gray-300 */
+}
+
+/* ✅ Gradient animation (for background use) */
+@keyframes mesh {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-mesh {
+  background: radial-gradient(circle at 20% 30%, #ff6ec7, transparent 40%),
+              radial-gradient(circle at 80% 20%, #6ec6ff, transparent 40%),
+              radial-gradient(circle at 50% 80%, #6effb3, transparent 40%),
+              radial-gradient(circle at 90% 70%, #ffd36e, transparent 40%);
+  background-size: 200% 200%;
+  animation: mesh 15s ease infinite;
+}

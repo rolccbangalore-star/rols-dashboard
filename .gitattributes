@@ -1,0 +1,15 @@
+# Force all TypeScript files to be treated as text (UTF-8, LF endings)
+*.ts text eol=lf
+*.tsx text eol=lf
+
+# Ensure JSON, CSS, and config files are text too
+*.json text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+
+# Prevent binary issues
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
