@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/app/lib/supabase"; // adjust path if needed
-import { UserProfile } from "@/types/database.types"; // ✅ use your stub types
+import { supabase } from "@/lib/supabase"; // ✅ correct path
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -23,18 +22,9 @@ export default function LoginPage() {
 
       if (error) throw error;
 
-      // fetch profile from user_profile table
-      const { data: profile, error: profileError } = await supabase
-        .from("user_profile")
-        .select("*")
-        .eq("user_id", data.user?.id)
-        .single<UserProfile>();
-
-      if (profileError) throw profileError;
-
-      console.log("Logged in as:", profile);
-      alert(`Welcome ${profile.full_name} (${profile.role_type})`);
-
+      // ✅ Safe: only relies on Supabase Auth (auth.users)
+      console.log("Logged in as:", data.user);
+      alert(`Welcome ${data.user?.email}`);
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     } finally {
